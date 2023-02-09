@@ -26,12 +26,12 @@ function register () {
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    alert('Email or Password is Outta Line!!')
+    alert('Email or Password is incorrect...')
     return
     // Don't continue running the code
   }
   if (validate_field(full_name) == false || validate_field(favourite_song) == false || validate_field(milk_before_cereal) == false) {
-    alert('One or More Extra Fields is Outta Line!!')
+    alert('One or More Extra Fields is missing...')
     return
   }
  
@@ -48,8 +48,7 @@ function register () {
     var user_data = {
       email : email,
       full_name : full_name,
-      favourite_song : favourite_song,
-      milk_before_cereal : milk_before_cereal,
+      phone_number : phone_number,
       last_login : Date.now()
     }
 
@@ -57,7 +56,7 @@ function register () {
     database_ref.child('users/' + user.uid).set(user_data)
 
     // DOne
-    alert('User Created!!')
+    alert('User has been Created Successfully...!!')
   })
   .catch(function(error) {
     // Firebase will use this to alert of its errors
@@ -76,7 +75,7 @@ function login () {
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    alert('Email or Password is Outta Line!!')
+    alert('Email or Password is incorrect...')
     return
     // Don't continue running the code
   }
