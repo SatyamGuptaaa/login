@@ -1,7 +1,6 @@
 // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyBULpAq8NZsy5Bop5gVDJTffyUATo9KeQU",
+var firebaseConfig = {
+  apiKey: "AIzaSyBULpAq8NZsy5Bop5gVDJTffyUATo9KeQU",
     authDomain: "stymrj-465d3.firebaseapp.com",
     projectId: "stymrj-465d3",
     storageBucket: "stymrj-465d3.appspot.com",
@@ -10,35 +9,29 @@
     measurementId: "G-DTHYM2SQ3T"
   };
 
-  // Initialize Firebase
-  //const app = initializeApp(firebaseConfig);
-  //const analytics = getAnalytics(app);
-  
-  firebase.initializeApp(firebaseConfig);
-  
-  // Initialize Variables
-  const auth = firebase.auth()
-  const database = firebase.database()
-  
-  // Set up our register function
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+// Initialize variables
+const auth = firebase.auth()
+const database = firebase.database()
+
+// Set up our register function
 function register () {
   // Get all our input fields
   email = document.getElementById('email').value
   password = document.getElementById('password').value
   full_name = document.getElementById('full_name').value
-  phone_number= document.getElementById('phone_number').value
-  movieholic = document.getElementById('movieholic').value
+  favourite_song = document.getElementById('favourite_song').value
+  milk_before_cereal = document.getElementById('milk_before_cereal').value
 
-  
   // Validate input fields
-  
-   if (validate_email(email) == false || validate_password(password) == false) {
-    alert('Your Email or Password is incorrect...')
+  if (validate_email(email) == false || validate_password(password) == false) {
+    alert('Email or Password is Outta Line!!')
     return
     // Don't continue running the code
   }
   if (validate_field(full_name) == false || validate_field(favourite_song) == false || validate_field(milk_before_cereal) == false) {
-    alert('One or More Extra Fields is Missing...')
+    alert('One or More Extra Fields is Outta Line!!')
     return
   }
  
@@ -55,8 +48,8 @@ function register () {
     var user_data = {
       email : email,
       full_name : full_name,
-      phone_number : phone_number,
-      movieholic : movieholic,
+      favourite_song : favourite_song,
+      milk_before_cereal : milk_before_cereal,
       last_login : Date.now()
     }
 
@@ -64,7 +57,7 @@ function register () {
     database_ref.child('users/' + user.uid).set(user_data)
 
     // DOne
-    alert('Oh Yeah!! Account Successfully Created..')
+    alert('User Created!!')
   })
   .catch(function(error) {
     // Firebase will use this to alert of its errors
@@ -80,10 +73,10 @@ function login () {
   // Get all our input fields
   email = document.getElementById('email').value
   password = document.getElementById('password').value
-  
+
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    alert('Oh No!! Email or Password is incorrect...')
+    alert('Email or Password is Outta Line!!')
     return
     // Don't continue running the code
   }
@@ -105,7 +98,7 @@ function login () {
     database_ref.child('users/' + user.uid).update(user_data)
 
     // DOne
-    alert('Oh Yeah!! You have been logged in successfully...')
+    alert('User Logged In!!')
 
   })
   .catch(function(error) {
@@ -118,9 +111,9 @@ function login () {
 }
 
 
-   
- // Validate Functions
- 
+
+
+// Validate Functions
 function validate_email(email) {
   expression = /^[^@]+@\w+(\.\w+)+\w$/
   if (expression.test(email) == true) {
@@ -152,5 +145,4 @@ function validate_field(field) {
     return true
   }
 }
-  
   
