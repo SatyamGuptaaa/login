@@ -11,8 +11,10 @@
   };
 
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  //const app = initializeApp(firebaseConfig);
+  //const analytics = getAnalytics(app);
+  
+  firebase.initializeApp(firebaseConfig);
   
   // Initialize Variables
   const auth = firebase.auth()
@@ -28,7 +30,8 @@ function register () {
   movieholic = document.getElementById('movieholic').value
 
   
-  // Validate Functions
+  // Validate input fields
+  
    if (validate_email(email) == false || validate_password(password) == false) {
     alert('Your Email or Password is incorrect...')
     return
@@ -116,7 +119,8 @@ function login () {
 
 
    
-   
+ // Validate Functions
+ 
 function validate_email(email) {
   expression = /^[^@]+@\w+(\.\w+)+\w$/
   if (expression.test(email) == true) {
